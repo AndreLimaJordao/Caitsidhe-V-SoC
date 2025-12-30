@@ -27,7 +27,7 @@ class RegFile {
 
         cvsim::word_t read(cvsim::reg_addr_t addr) const {
             if (addr >= 32) {
-                std::cerr << "[RF] Aviso: Endereço inválido (Masking aplicado): " << static_cast<int>(addr) << std::endl;
+                std::cerr << "[RF] Warning: Invalid address (Masking applied): " << static_cast<int>(addr) << std::endl;
             }
             cvsim::reg_addr_t bound_addr = addr & 0x1F; // Garante que o endereço está entre 0 e 31
             if (bound_addr == 0) return 0; // Registrador x0 é sempre zero
@@ -36,10 +36,10 @@ class RegFile {
 
         void write(cvsim::reg_addr_t addr, cvsim::word_t value) {
             if (addr >= 32) {
-                std::cerr << "[RF] Aviso: Endereço inválido (Masking aplicado): " << static_cast<int>(addr) << std::endl;
+                std::cerr << "[RF] Warning: Invalid address (Masking applied): " << static_cast<int>(addr) << std::endl;
             }
             if (addr == 0) {
-                std::cerr << "[RF] Aviso: Tentativa de escrita no registrador x0 ignorada." << std::endl;
+                std::cerr << "[RF] Warning: Attempt to write to x0 ignored." << std::endl;
                 return;
             }
             cvsim::reg_addr_t bound_addr = addr & 0x1F; // Garante que o endereço está entre 0 e 31
@@ -52,18 +52,19 @@ class RegFile {
         }
 
         void dump() const {
-            std::cout << "\n=== Register File State ===" << std::endl;
+            std::cout << "\n+==================================== Register File State ====================================+" << std::endl;
             std::cout << std::hex << std::setfill('0');
 
             for (int i = 0; i < 32; i += 4) {
+                std::cout << "|";
                 for (int j = 0; j < 4; j++) {
                     int r = i + j;
                     std::cout << "x" << std::dec << std::setw(2) << std::right << r
-                              << "(" << std::setw(4) << abi_names[r] << "): "
-                              << "0x" << std::hex << std::setw(8) << std::right << regs[r] << "  ";
+                              << "(" << std::setfill(' ') << std::setw(5) << abi_names[r] << "): "
+                              << "0x" << std::setfill('0') << std::hex << std::setw(8) << std::right << regs[r] << "  ";
                 }
                 std::cout << std::endl;
             }
-            std::cout << "===========================" << std::dec << std::endl;
+            std::cout << "+=============================================================================================+" << std::dec << std::endl;
         }
 };

@@ -27,7 +27,7 @@ class ALU {
                 case cvsim::ALUOp::SLT: res = (static_cast<int32_t>(src1) < static_cast<int32_t>(src2)) ? 1 : 0; break;
                 case cvsim::ALUOp::SLTU: res = (src1 < src2) ? 1 : 0; break;
                 default:
-                    std::cerr << "[ALU] Erro: Operação ALU desconhecida!" << std::endl;
+                    std::cerr << "[ALU] Error: ALU operation not implemented!" << std::endl;
                     break;
             }
 
