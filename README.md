@@ -13,10 +13,3 @@ Caithsidhe-V is designed to **model hardware behavior**, including a bus interco
 ## Architecture
 
 The system is designed around the RISC-V RV32I architecture, containing a CPU Core, the interconnect bus and peripherals.
-
-```mermaid
-graph TD;
-    CPU[RISC-V CPU Core] -->|Address/Data| BUS[Interconnect Bus];
-    BUS -->|0x8000_0000| RAM[Main Memory (RAM)];
-    BUS -->|MMIO Access| To be added (Other Peripherals);
-```
