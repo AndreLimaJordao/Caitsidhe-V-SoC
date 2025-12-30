@@ -45,7 +45,7 @@ graph TD
 ## Memory Map
 The Caitsidhe-V SoC uses the following memory map:
 - `0x9000_0000` - `0x9FFF_FFFF`: MMIO Peripherals (Future Expansion)
-- `0x8000_0000` - `0x8FFF_FFFF`: Main Memory (RAM)
+- `0x8000_0000` - `0x800F_FFFF`: Main Memory (RAM), size configurable at runtime
 
 ---
 
@@ -105,14 +105,14 @@ Developed with 🐱 and ❤️ by [André L. Jordão](https://github.com/AndreLi
 
 ---
 
-### DO NOT PUBLISH MY NOTES!
+### Some notes about the project (FAQ & Motivation):
 
 - Why "Caitsidhe-V"?
   - Caitsidhe (Cat-Sith) is a fairy creature from Scottish and Irish mythology, how I got that far? I don't know, I just liked the name and the cat reference.
   - The "V" stands for RISC-V, the architecture being implemented. SoC = System made by Cats.
 - Why I am doing this?
   - Because I had nothing better to do and somehow I almost got reproved in my Computer Architecture class.
-  - Also... I have an toxic relationship with Verilog, FPGAs and MCU. I can't pass up an opportunity to avoid them.
+  - Also... I have a big interest in Verilog, FPGAs and Embedded Systems. I... just can't get enough of hardware stuff.
 - What is the purpose of this project?
   - Did you tried making your own peripheral in QEMU? Me neither... but I know it is bad...
   - Also... Caithsidhe-V is, primarily, a tool for developing peripherals and hardware accelerators in a more "hardware-like" environment.
