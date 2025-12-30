@@ -33,10 +33,10 @@ namespace cvsim {
     // Constantes do processador
     // ===================================
 
-    constexpr int XLEN = 32;                    // Limite de bits do registrador
-    constexpr int NUM_REGS = 32;                // Número de registradores gerais
-    constexpr int RESET_VECTOR = 0x80000000;    // Vetor de reset onde PC inicia
-    constexpr addr_t MEM_SIZE = 64 * 1024;   // Tamanho da memória: 64kB
+    constexpr int XLEN = 32;                        // Limite de bits do registrador
+    constexpr int NUM_REGS = 32;                    // Número de registradores gerais
+    constexpr addr_t RESET_VECTOR = 0x80000000;     // Vetor de reset onde PC inicia
+    constexpr addr_t MEM_SIZE = 1024 * 1024;        // Tamanho da memória: 1 MB
     // ===================================
     // Definições de instruções
     // ===================================
@@ -99,6 +99,19 @@ namespace cvsim {
         SRL_SRA = 0b101,
         OR      = 0b110,
         AND     = 0b111
+    };
+
+    enum class ALUOp : uint8_t {
+        ADD,    // Soma (ADD, ADDI)
+        SUB,    // Subtração (SUB)
+        AND,    // And bit a bit (AND, ANDI)
+        OR,     // Or bit a bit (OR, ORI)
+        XOR,    // Xor bit a bit (XOR, XORI)
+        SLL,    // Shift left logical (SLL, SLLI)
+        SRL,    // Shift right logical (SRL, SRLI)
+        SRA,    // Shift right arithmetic (SRA, SRAI)
+        SLT,    // Set less than (SLT, SLTI)
+        SLTU    // Set less than unsigned (SLTU, SLTIU)
     };
 
     // ===================================

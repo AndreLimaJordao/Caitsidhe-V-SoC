@@ -4,9 +4,10 @@
 
 #pragma once
 #include "ram.h"
+#include "../common/types.h"
 
 namespace MemoryMap {
-    constexpr cvsim::addr_t RAM_BASE = 0x80000000;
+    constexpr cvsim::addr_t RAM_BASE = cvsim::RESET_VECTOR;
     // TODO: Adicionar os endereços de outros dispositivos ou periféricos aqui
 }
 

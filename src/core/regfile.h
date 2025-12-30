@@ -38,6 +38,10 @@ class RegFile {
             if (addr >= 32) {
                 std::cerr << "[RF] Aviso: Endereço inválido (Masking aplicado): " << static_cast<int>(addr) << std::endl;
             }
+            if (addr == 0) {
+                std::cerr << "[RF] Aviso: Tentativa de escrita no registrador x0 ignorada." << std::endl;
+                return;
+            }
             cvsim::reg_addr_t bound_addr = addr & 0x1F; // Garante que o endereço está entre 0 e 31
             if (bound_addr == 0) return; // Registrador x0 é sempre zero
             regs[bound_addr] = value;
@@ -54,7 +58,7 @@ class RegFile {
             for (int i = 0; i < 32; i += 4) {
                 for (int j = 0; j < 4; j++) {
                     int r = i + j;
-                    std::cout << "x" << std::dec << std::setw(2) << std::left << r
+                    std::cout << "x" << std::dec << std::setw(2) << std::right << r
                               << "(" << std::setw(4) << abi_names[r] << "): "
                               << "0x" << std::hex << std::setw(8) << std::right << regs[r] << "  ";
                 }
