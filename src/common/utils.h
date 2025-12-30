@@ -28,7 +28,7 @@ namespace utils {
             int32_t value;
         } s;
         s.value = value;
-        return s.x;
+        return s.value;
     }
 
     // Função para combinar bytes em uma palavra (little-endian)
