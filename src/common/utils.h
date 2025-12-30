@@ -2,11 +2,6 @@
 // Created by andre on 29/12/2025.
 //
 
-#ifndef UTILS_H
-#define UTILS_H
-
-#endif //UTILS_H
-
 #pragma once
 #include <cstdint>
 

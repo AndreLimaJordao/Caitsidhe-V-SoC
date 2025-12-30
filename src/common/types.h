@@ -2,11 +2,6 @@
 // Created by andre on 29/12/2025.
 //
 
-#ifndef TYPES_H
-#define TYPES_H
-
-#endif //TYPES_H
-
 #pragma once
 #include <cstdint>
 
