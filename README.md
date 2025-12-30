@@ -35,8 +35,8 @@ graph TD
 ```
 
 ## Features
-- **Cycle-Accurate Simulation**: Models hardware timing and behavior accurately.
-- **Modular Design**: Easily extendable with new peripherals and accelerators. All components communicate are decoupled classes, mimicking hardware modules.
+- **Cycle-Accurate Simulation**: Models hardware timing and behavior accurately. (On progress)
+- **Modular Design**: Easily extendable with new peripherals and accelerators. All components are decoupled classes, mimicking hardware modules.
 - **Bus-Based Interconnect**: Centralized bus for memory and peripheral access.
 - **Trace Logging**: Detailed logging for debugging and analysis.
 
@@ -109,12 +109,12 @@ Developed with 🐱 and ❤️ by [André L. Jordão](https://github.com/AndreLi
 
 - Why "Caitsidhe-V"?
   - Caitsidhe (Cat-Sith) is a fairy creature from Scottish and Irish mythology, how I got that far? I don't know, I just liked the name and the cat reference.
-  - The "V" stands for RISC-V, the architecture being implemented. SoC = System made by Cats.
+  - The "V" stands for RISC-V, the architecture being implemented. SoC = System made by good O'Cats.
 - Why I am doing this?
-  - Because I had nothing better to do and somehow I almost got reproved in my Computer Architecture class.
+  - Because I had nothing better to do and somehow I almost failed in my Computer Architecture class.
   - Also... I have a big interest in Verilog, FPGAs and Embedded Systems. I... just can't get enough of hardware stuff.
 - What is the purpose of this project?
-  - Did you tried making your own peripheral in QEMU? Me neither... but I know it is bad...
+  - Did you try making your own peripheral in QEMU? Me neither... but I know it is bad...
   - Also... Caithsidhe-V is, primarily, a tool for developing peripherals and hardware accelerators in a more "hardware-like" environment.
   - It can also be used as a learning tool for understanding RISC-V architecture and SoC design.
 - Is this project production-ready?
