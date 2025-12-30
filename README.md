@@ -66,23 +66,6 @@ Prerequisites:
 - C++20 compatible compiler (e.g., GCC, Clang)
 - CMake 3.30+
 
-Build and Run:
-```bash
-# Clone the repository
-git clone [https://github.com/your-username/caitsidhe-v.git](https://github.com/your-username/caitsidhe-v.git)
-cd caitsidhe-v
-
-# Create build directory
-mkdir build && cd build
-
-# Configure and Build
-cmake ..
-make
-
-# Run the simulator
-./Caitsidhe_V
-```
-
 ---
 
 ## My development roadmap:
