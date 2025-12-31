@@ -10,7 +10,7 @@
 
 class RAM {
     private:
-        std::vector<uint8_t> data;
+        std::vector<cvsim::word_t> data;
 
     public:
         RAM(size_t size) {

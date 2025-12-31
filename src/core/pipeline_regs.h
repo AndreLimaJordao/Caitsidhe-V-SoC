@@ -6,8 +6,7 @@
 #include "../common/types.h"
 
 namespace cvsim {
-
-    struct IF_ID_Regs {
+    struct IF_ID_Reg {
         addr_t pc;
         inst_t instruction;
 

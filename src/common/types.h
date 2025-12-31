@@ -37,6 +37,7 @@ namespace cvsim {
     constexpr int NUM_REGS = 32;                    // Número de registradores gerais
     constexpr addr_t RESET_VECTOR = 0x80000000;     // Vetor de reset onde PC inicia
     constexpr addr_t MEM_SIZE = 1024 * 1024;        // Tamanho da memória: 1 MB
+
     // ===================================
     // Definições de instruções
     // ===================================
