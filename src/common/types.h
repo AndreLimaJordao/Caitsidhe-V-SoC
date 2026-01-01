@@ -172,4 +172,16 @@ namespace cvsim {
 
         inst_t raw;
     };
+
+    struct ControlSignals {
+        bool regWrite;
+        bool memToReg;
+        bool memRead;
+        bool memWrite;
+        bool branch;
+        bool aluSrc;
+        bool aluOp1;
+        bool aluOp0;
+        cvsim::InstrType type;
+    };
 }

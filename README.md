@@ -13,7 +13,7 @@ Caitsidhe-V is designed to **model hardware behavior**, including a bus intercon
 
 ## Architecture
 
-The system is designed around the RISC-V RV32I architecture, containing a CPU Core, the interconnect bus and peripherals.
+The system is designed around the RISC-V RV32I architecture, containing a CPU Core, the interconnect bus, a main memory and peripherals.
 
 ```mermaid
 graph TD
@@ -51,12 +51,22 @@ The Caitsidhe-V SoC uses the following memory map:
 
 ## Project Structure
 ```
+docs/
+├── design/         # Design documents and architecture diagrams
+├── examples/       # Example programs and usage guides
+├── images/         # Images and diagrams used in documentation
+├── documents/      # Additional documents related to the project
+└── tutorials/      # Step-by-step tutorials for using and extending Caitsidhe-V and writing peripherals
 src/
-├── common/       # Type definitions (word_t, instr_t) and bit manipulation utils
-├── core/         # CPU Core logic (ALU, Control Unit, Register File, Pipeline)
-├── memory/       # Memory subsystem (RAM, Bus Interconnect)
-├── peripherals/  # MMIO Peripherals (UART, etc.)
-└── main.cpp      # System instantiation and simulation loop
+├── common/         # Type definitions (word_t, instr_t) and bit manipulation utils
+├── core/           # CPU Core logic (ALU, Control Unit, Register File, Pipeline)
+├── memory/         # Memory subsystem (RAM, Bus Interconnect)
+├── peripherals/    # MMIO Peripherals (UART, etc.)
+└── main.cpp        # System instantiation and simulation loop
+tests/
+├── google_tests/   # Unit tests using Google Test framework
+├── matatabi/       # Set of unit tests for various components, using proprietary Matatabi framework
+└── risv-arch-test/ # RISC-V architecture compliance tests
 ```
 
 ---
@@ -71,38 +81,51 @@ Prerequisites:
 ## My development roadmap:
 - [x] Basic Memory (RAM) & Bus Infrastructure
 - [x] Register File & ALU Implementation
-- [ ] CPU Core: Fetch & Decode Stages
+- [x] CPU Core: Fetch & Decode Stages
 - [ ] CPU Core: Execute & Writeback Logic
 - [ ] Pipeline: Hazard Detection & Forwarding Unit
 - [ ] MMIO: A bunch of peripherals
-- [ ] Verification: Trace comparison with standard RISC-V simulators (Spike)
+- [ ] Verification: Trace comparison with standard RISC-V simulators (Spike & riscv-arch-test)
+- [ ] Docs: Documentation & Examples
+- [ ] Tester and debug tools: Bus Mocker for Peripheral testing (Matatabi Mocker)
 
 ---
 
 ## License
-This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE)
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE).
 
 ---
 
-Developed with 🐱 and ❤️ by [André L. Jordão](https://github.com/AndreLimaJordao) - UFPE/CIn
+### Some notes about the project:
 
----
-
-### Some notes about the project (FAQ & Motivation):
-
-- Why "Caitsidhe-V"?
+- Q: Why "Caitsidhe-V"?
   - Caitsidhe (Cat-Sith) is a fairy creature from Scottish and Irish mythology, how I got that far? I don't know, I just liked the name and the cat reference.
-  - The "V" stands for RISC-V, the architecture being implemented. SoC = System made by good O'Cats.
-- Why I am doing this?
-  - Because I had nothing better to do and somehow I almost failed in my Computer Architecture class.
+  - The "V" stands for RISC-V, the architecture being implemented. SoC = System of Cats... I mean, System-on-Chip.
+- Q: Why I am doing this?
+  - Honestly? I almost failed in my Computer Architecture class. So... This is my revenge!
   - Also... I have a big interest in Verilog, FPGAs and Embedded Systems. I... just can't get enough of hardware stuff.
-- What is the purpose of this project?
-  - Did you try making your own peripheral in QEMU? Me neither... but I know it is bad...
-  - Also... Caithsidhe-V is, primarily, a tool for developing peripherals and hardware accelerators in a more "hardware-like" environment.
+- Q: What is the purpose of this project?
+  - Caitsidhe-V is, primarily, a tool for developing peripherals and hardware accelerators in a more "hardware-like" environment.
   - It can also be used as a learning tool for understanding RISC-V architecture and SoC design.
-- Is this project production-ready?
-  - No, this is a learning project and a prototype. Use it at your own risk.
-- Can I contribute?
-  - Absolutely! Feel free to open issues or submit pull requests. (YOU MUST CONTRIBUTE WITH CAT MEMES)!
-- Which themes you use in VSCode?
-  - Catppuccin-Mocha and Fira Code Nerd Font. (Because cats and fonts matter).
+  - And... QEMU is fantastic, but trying to add a simple custom peripheral to it is... well... 'QEMU Levels of harshness'. Caitsidhe-V is designed to be hackable and be hacked.
+- Q: Is this project production-ready?
+  - **No.** This project is a work in progress (WIP).. Use at your own risk.
+- Q: What are the limitations of this project?
+  - Currently, only the RV32I base integer instruction set will be implemented. No floating-point or advanced extensions yet.
+  - The CPU core is not fully implemented; only basic components are in place.
+  - Peripheral support is minimal at this stage.
+- Q: Why make it "Peripheral-Centric"?
+  - Most computers don't task the CPU with everything. Peripherals and hardware accelerators offload specific tasks from the CPU, improving overall system performance and efficiency.
+  - This project aims to provide a platform for experimenting with such peripherals in a cycle-accurate environment without the complexity of HDLs like Verilog.
+  - Plus, peripherals are fun to make!
+- Q: Can I contribute?
+  - Absolutely! Feel free to open issues or submit pull requests. 
+  - **Rule #1:** (Optional but encouraged) YOU MUST CONTRIBUTE WITH CAT MEMES!
+- Q: Which themes you use in VSCode?
+  - **Catppuccin-Mocha** and **Fira Code Nerd Font**. (Because cats and fonts matter).
+
+---
+
+<div style='text-align: center;'>
+  Build with ❤️ and 😸 by André L. Jordão!
+</div>

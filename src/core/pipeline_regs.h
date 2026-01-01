@@ -37,6 +37,9 @@ namespace cvsim {
         word_t rs2_val;
         reg_addr_t rd;
 
+        bool zero_flag;
+        addr_t branch_target;
+
         bool WB[2];             // [0] = RegWrite, [1] = MemtoReg
         bool M[3];              // [0] = MemRead, [1] = MemWrite, [2] = Branch
 

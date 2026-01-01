@@ -13,4 +13,5 @@ add_executable(Caitsidhe_V src/main.cpp
         src/core/regfile.h
         src/memory/bus.h
         src/memory/ram.h
-        src/peripherals/uart.h)
+        src/peripherals/uart.h
+        src/core/genImm.h)

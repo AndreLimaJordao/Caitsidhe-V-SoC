@@ -21,12 +21,9 @@ namespace utils {
 
     // Função de extensão de sinal para um valor com 'bits' bits
     // Exemplo: sign_extend(0b111, 3) retorna 0xFFFFFFFF
-    constexpr int32_t sign_extend(uint32_t value) {
-        struct {
-            int32_t value;
-        } s;
-        s.value = value;
-        return s.value;
+    constexpr int32_t sign_extend(uint32_t value, int bits) {
+        int32_t shift = 32 - bits;
+        return (static_cast<int32_t>(value) << shift) >> shift;
     }
 
     // Função para combinar bytes em uma palavra (little-endian)

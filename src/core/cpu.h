@@ -6,11 +6,15 @@
 #include "../common/types.h"
 #include "../common/utils.h"
 #include "../memory/bus.h"
-#include "regfile.h"
 #include "alu.h"
+#include "control.h"
+#include "genImm.h"
 #include "pipeline_regs.h"
+#include "regfile.h"
 #include <array>
 #include <iostream>
+
+#include "genImm.h"
 
 class CPU {
     private:
@@ -34,7 +38,39 @@ class CPU {
         }
 
         cvsim::ID_EX_Reg decode(cvsim::IF_ID_Reg if_id) {
+            cvsim::ID_EX_Reg id_ex;
 
+            id_ex.instruction = if_id.instruction;
+            id_ex.pc = if_id.pc;
+            id_ex.valid = if_id.valid;
+
+            if (!if_id.valid) return id_ex;
+
+            cvsim::DecodedInstr decoded;
+            decoded.raw = if_id.instruction;
+            id_ex.opcode = static_cast<cvsim::Opcode>(decoded.r_type.opcode);
+            id_ex.rd = decoded.r_type.rd;
+
+            cvsim::ControlSignals signals = control::ControlUnit::getSignals(id_ex.opcode);
+
+            id_ex.WB[0] = signals.regWrite;
+            id_ex.WB[1] = signals.memWrite;
+
+            id_ex.M[0] = signals.memRead;
+            id_ex.M[1] = signals.memWrite;
+            id_ex.M[2] = signals.branch;
+
+            id_ex.EX[0] = signals.aluSrc;
+            id_ex.EX[1] = signals.aluOp1;
+            id_ex.EX[2] = signals.aluOp0;
+
+            id_ex.instr_type = signals.type;
+
+            id_ex.rs1_val = regFile.read(decoded.r_type.rs1);
+            id_ex.rs2_val = regFile.read(decoded.r_type.rs2);
+            id_ex.imm = cvsim::genImm(decoded, signals.type);
+
+            return id_ex;
         }
 
         cvsim::EX_MEM_Reg execute(cvsim::ID_EX_Reg id_ex) {
